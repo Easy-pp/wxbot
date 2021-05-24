@@ -1,0 +1,41 @@
+{
+  "name": "wechat-bot",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 12"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "qrcode-terminal": "^0.12.0",
+    "wechaty": "^0.60.3",
+    "wechaty-plugin-contrib": "^0.14.16"
+  },
+  "devDependencies": {
+    "@chatie/eslint-config": "^0.12.3",
+    "@chatie/git-scripts": "^0.6.2",
+    "@chatie/tsconfig": "^0.14.1",
+    "axios": "^0.21.0",
+    "check-node-version": "^4.1.0",
+    "connect": "^3.7.0",
+    "cross-env": "^7.0.3",
+    "encoding": "^0.1.13",
+    "is-pr": "^2.0.0",
+    "marked": "^2.0.0",
+    "nodemon": "^2.0.7",
+    "wechaty-puppet-mock": "^0.28.2",
+    "wechaty-puppet-wechat": "^0.28",
+    "wechaty-puppet-wechat4u": "^0.18",
+    "wechaty-puppet-whatsapp": "0.2.3"
+  },
+  "git": {
+    "scripts": {
+      "pre-push": "npx git-scripts-pre-push"
+    }
+  }
+}
