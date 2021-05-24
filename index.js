@@ -23,7 +23,7 @@ function onLogout(user) {
 }
 
 const bot = new Wechaty({
-  name: 'ding-dong-bot',
+  name: 'wechat-bot',
   /**
    * How to set Wechaty Puppet Provider:
    *
