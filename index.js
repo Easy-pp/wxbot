@@ -1,40 +1,29 @@
+const { Wechaty, ScanStatus, log } = require('wechaty');
 
-
-const { Wechaty, ScanStatus, log } = require("wechaty");
-
-const handleMessage = require('./event/message')
+const handleMessage = require('./event/message');
 
 function onScan(qrcode, status) {
   if (status === ScanStatus.Waiting || status === ScanStatus.Timeout) {
-    require("qrcode-terminal").generate(qrcode, { small: true }); // show qrcode on console
+    require('qrcode-terminal').generate(qrcode, { small: true }); // show qrcode on console
 
-    const qrcodeImageUrl = [
-      "https://wechaty.js.org/qrcode/",
-      encodeURIComponent(qrcode),
-    ].join("");
+    const qrcodeImageUrl = ['https://wechaty.js.org/qrcode/', encodeURIComponent(qrcode)].join('');
 
-    log.info(
-      "StarterBot",
-      "onScan: %s(%s) - %s",
-      ScanStatus[status],
-      status,
-      qrcodeImageUrl
-    );
+    log.info('StarterBot', 'onScan: %s(%s) - %s', ScanStatus[status], status, qrcodeImageUrl);
   } else {
-    log.info("StarterBot", "onScan: %s(%s)", ScanStatus[status], status);
+    log.info('StarterBot', 'onScan: %s(%s)', ScanStatus[status], status);
   }
 }
 
 function onLogin(user) {
-  log.info("StarterBot", "%s login", user);
+  log.info('StarterBot', '%s login', user);
 }
 
 function onLogout(user) {
-  log.info("StarterBot", "%s logout", user);
+  log.info('StarterBot', '%s logout', user);
 }
 
 const bot = new Wechaty({
-  name: "ding-dong-bot",
+  name: 'ding-dong-bot',
   /**
    * How to set Wechaty Puppet Provider:
    *
@@ -50,12 +39,12 @@ const bot = new Wechaty({
   // puppet: 'wechaty-puppet-wechat',
 });
 
-bot.on("scan", onScan);
-bot.on("login", onLogin);
-bot.on("logout", onLogout);
-bot.on("message", handleMessage);
+bot.on('scan', onScan);
+bot.on('login', onLogin);
+bot.on('logout', onLogout);
+bot.on('message', handleMessage);
 
 bot
   .start()
-  .then(() => log.info("StarterBot", "Starter Bot Started."))
-  .catch((e) => log.error("StarterBot", e));
+  .then(() => log.info('StarterBot', 'Starter Bot Started.'))
+  .catch(e => log.error('StarterBot', e));

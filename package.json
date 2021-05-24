@@ -17,9 +17,6 @@
     "wechaty-plugin-contrib": "^0.14.16"
   },
   "devDependencies": {
-    "@chatie/eslint-config": "^0.12.3",
-    "@chatie/git-scripts": "^0.6.2",
-    "@chatie/tsconfig": "^0.14.1",
     "axios": "^0.21.0",
     "check-node-version": "^4.1.0",
     "connect": "^3.7.0",
@@ -32,10 +29,5 @@
     "wechaty-puppet-wechat": "^0.28",
     "wechaty-puppet-wechat4u": "^0.18",
     "wechaty-puppet-whatsapp": "0.2.3"
-  },
-  "git": {
-    "scripts": {
-      "pre-push": "npx git-scripts-pre-push"
-    }
   }
 }
