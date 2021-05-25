@@ -5,7 +5,8 @@ const routes = [
 	{ keyword: "基金召唤兽", handle: getFunds },
 	{ keyword: "@基金小助手", handle: getAIAns },
 ];
-const roomList = ["对韭当割", "测试"];
+const roomList = ["测试"];
+// const roomList = ["对韭当割", "测试"];
 async function handleMessage(msg) {
 	// const text = msg.toString();
 	const text = msg.text();
