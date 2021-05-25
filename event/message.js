@@ -8,6 +8,7 @@ async function handleMessage(msg) {
     const route = routes.find(route => {
       return text.includes(route.keyword);
     });
+    if (!route) return;
     const message = await route.handle();
     await msg.say(message);
   }
