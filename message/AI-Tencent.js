@@ -62,6 +62,7 @@ function sendMessage(msgInfo) {
 		console.log(res);
 		const { data } = res;
 		if (data.ret === 0) return data.data.answer;
+		return "很抱歉,这个问题我还需要学习下";
 	});
 }
 
