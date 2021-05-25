@@ -42,7 +42,7 @@ function randomString(length) {
 	return result;
 }
 function sendMessage(msgInfo) {
-	const { text, room: session } = msgInfo;
+	const { text, room, contact } = msgInfo;
 	const { APPID, APPKEY } = DEFAULT_CONFIG;
 	const question = text.replace(/@基金小助手/g, "").trim();
 	if (!question) return "请问有什么需要帮助的吗";
@@ -50,7 +50,7 @@ function sendMessage(msgInfo) {
 		app_id: APPID,
 		time_stamp: Date.parse(new Date()) / 1000,
 		nonce_str: randomString(10),
-		session,
+		session: `${room}_${contact}`,
 		question,
 	};
 	console.log(params);
