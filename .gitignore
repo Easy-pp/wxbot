@@ -3,6 +3,7 @@ node_modules/
 dist/
 wechat-bot.memory-card
 npm-debug.log*
+wechat.config.js
 yarn-debug.log*
 yarn-error.log*
 package-lock.json
