@@ -16,11 +16,19 @@ module.exports = {
 	DAYLIST: [
 		{
 			name: "sunset",
-			alias: "备注",
+			alias: "",
 			memorialDay: "2019/11/03",
 			city: "杭州",
 			endWord: "爱你的陳嘿嘿",
 			date: "0 0 10 * * *",
+		},
+		{
+			name: "步履不停",
+			alias: "",
+			memorialDay: "2019/11/03",
+			city: "杭州",
+			endWord: "基金小助手",
+			date: "0 10 9 * * *",
 		},
 	],
 
@@ -33,10 +41,10 @@ module.exports = {
 	 */
 	ROOMLIST: [
 		{
-			roomName: "群名",
+			roomName: "对韭当割",
 			sortId: 22,
-			endWord: "小助手雷欧",
-			date: "0 30 7 * * *",
+			endWord: "基金小助手",
+			date: "0 30 9 * * *",
 		},
 	],
 	/**
