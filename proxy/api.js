@@ -140,11 +140,12 @@ async function getResByTX(word, id) {
 		};
 		let res = await req(option);
 		let content = parseBody(res);
+		console.log(content);
 		if (content.code === 200) {
 			let response = "";
-			if (content.datatype === "text") {
+			if (content.newslist[0].datatype === "text") {
 				response = content.newslist[0].reply;
-			} else if (content.datatype === "view") {
+			} else if (content.newslist[0].datatype === "view") {
 				response = `虽然我不太懂你说的是什么，但是感觉很高级的样子，因此我也查找了类似的文章去学习，你觉得有用吗<br> 
         《${content.newslist[0].title}》${content.newslist[0].url}`;
 			} else {
@@ -622,6 +623,7 @@ async function getMeiNv() {
 	}
 }
 module.exports = {
+	getUniqueId,
 	getOne,
 	getResByTXTL,
 	getResByTX,

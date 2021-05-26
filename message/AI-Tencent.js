@@ -1,7 +1,6 @@
 const qs = require("qs");
 const axios = require("axios");
-const md5 = require("md5");
-
+const api = require("../proxy/api");
 const DEFAULT_CONFIG = {
 	APPID: "2173834995",
 	APPKEY: "5row6NAxKhre7XUc",
@@ -41,29 +40,36 @@ function randomString(length) {
 		result += str[Math.floor(Math.random() * str.length)];
 	return result;
 }
-function sendMessage(msgInfo) {
+async function sendMessage(msgInfo) {
 	const { text, room, contact } = msgInfo;
 	const { APPID, APPKEY } = DEFAULT_CONFIG;
 	const question = text.replace(/@基金小助手/g, "").trim();
 	if (!question) return "请问有什么需要帮助的吗";
+	// const id = api.getUniqueId(`${room}_${contact}`);
+	// const result = await api.getResByTX(question, id);
+	// return result;
 	const params = {
 		app_id: APPID,
 		time_stamp: Date.parse(new Date()) / 1000,
 		nonce_str: randomString(10),
-		session: `${room}_${contact}`,
+		session: `${room}`,
 		question,
 	};
-	console.log(params);
 	params.sign = getReqSign(params, APPKEY);
 	const newParams = qs.stringify(params);
 	const url = `https://api.ai.qq.com/fcgi-bin/nlp/nlp_textchat?${newParams}`;
 
-	return axios.get(url).then((res) => {
-		console.log(res);
-		const { data } = res;
-		if (data.ret === 0) return data.data.answer;
-		return "很抱歉,这个问题我还需要学习下";
-	});
+	return axios
+		.get(url)
+		.then((res) => {
+			console.log(res);
+			const { data } = res;
+			if (data.ret === 0) return data.data.answer;
+			return "很抱歉,这个问题我还需要学习下";
+		})
+		.catch(() => {
+			return "啊，脑子有点短路了";
+		});
 }
 
 module.exports = sendMessage;
