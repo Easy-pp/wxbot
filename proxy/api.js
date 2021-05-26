@@ -293,21 +293,21 @@ async function getNews(id) {
 		let option = {
 			method: "GET",
 			url: apiConfig.TXDAYNEWS,
-			params: { key: config.TXAPIKEY, num: 10, col: id },
+			params: { key: config.TXAPIKEY, num: 10 },
 		};
 		let res = await req(option);
 		let content = parseBody(res);
 		if (content.code === 200) {
 			let newList = content.newslist;
 			let news = "";
-			let shortUrl = await getShortUrl(
-				"https://www.tianapi.com/weixin/news/?col=" + id
-			);
+			// let shortUrl = await getShortUrl(
+			// 	"https://www.tianapi.com/weixin/news/?col=" + id
+			// );
 			for (let i in newList) {
 				let num = parseInt(i) + 1;
 				news = `${news}<br>${num}.${newList[i].title}`;
 			}
-			return `${news}<br>新闻详情查看：${shortUrl}<br>`;
+			return `${news}`;
 		}
 	} catch (error) {
 		console.log("获取天行新闻失败", error);
@@ -501,6 +501,7 @@ async function getShortUrl(url) {
 		};
 		let res = await req(option);
 		let content = parseBody(res);
+
 		if (content.code === 200) {
 			let item = content.newslist[0];
 			let shorturl = item.shorturl;
