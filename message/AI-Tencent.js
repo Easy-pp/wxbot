@@ -1,5 +1,6 @@
 const qs = require("qs");
 const axios = require("axios");
+const md5 = require("md5");
 const api = require("../proxy/api");
 const DEFAULT_CONFIG = {
 	APPID: "2173834995",
@@ -62,7 +63,7 @@ async function sendMessage(msgInfo) {
 	return axios
 		.get(url)
 		.then((res) => {
-			console.log(res);
+			console.log(res.data);
 			const { data } = res;
 			if (data.ret === 0) return data.data.answer;
 			return "很抱歉,这个问题我还需要学习下";
@@ -71,5 +72,5 @@ async function sendMessage(msgInfo) {
 			return "啊，脑子有点短路了";
 		});
 }
-
+sendMessage({ text: "are you ok ", room: "dsd" });
 module.exports = sendMessage;

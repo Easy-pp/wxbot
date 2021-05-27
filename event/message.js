@@ -1,8 +1,9 @@
 const getFunds = require("../message/fund");
 const getAIAns = require("../message/AI-Tencent");
-
+const PANG_CODE = ["005312", "008282", "002168", "160222", "003095"];
 const routes = [
-	{ keyword: "基金召唤兽", handle: getFunds },
+	{ keyword: "基金召唤兽", handle: () => getFunds() },
+	{ keyword: "小胖の基金", handle: () => getFunds(PANG_CODE) },
 	{ keyword: "@基金小助手", handle: getAIAns },
 ];
 // const roomList = ["测试"];
