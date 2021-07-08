@@ -17,7 +17,7 @@ module.exports = {
 		{
 			name: "sunset",
 			alias: "",
-			memorialDay: "2019/11/03",
+			memorialDay: "1995/04/15",
 			city: "杭州",
 			endWord: "爱你的陳嘿嘿",
 			date: "0 30 9 * * *",
@@ -35,7 +35,7 @@ module.exports = {
 		{
 			roomName: "对韭当割",
 			sortId: 22,
-			endWord: "基金小助手",
+			endWord: "小助手",
 			date: "0 28 9 * * *",
 		},
 	],
