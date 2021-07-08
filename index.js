@@ -43,7 +43,7 @@ const bot = new Wechaty({
 	 *  - wechaty-puppet-service (token required, see: <https://wechaty.js.org/docs/puppet-services>)
 	 *  - etc. see: <https://github.com/wechaty/wechaty-puppet/wiki/Directory>
 	 */
-	// puppet: 'wechaty-puppet-wechat',
+	puppet: 'wechaty-puppet-wechat',
 });
 
 bot.on("scan", onScan);

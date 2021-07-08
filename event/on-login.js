@@ -114,6 +114,7 @@ async function initSchedule(that, scheduleList, daySayList, RoomSayList) {
  * @param {*} user 登录用户
  */
 async function onLogin(user) {
+	global.user = user;
 	console.log(`贴心助理${user}登录了`);
 	setTimeout(async () => {
 		let scheduleList = await api.getScheduleList();
