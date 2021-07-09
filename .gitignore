@@ -16,3 +16,4 @@ tests/**/coverage/
 *.ntvs*
 *.njsproj
 *.sln
+*memory-card.json
