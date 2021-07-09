@@ -8,6 +8,7 @@ const {
   fundCodesOfRan,
   fundCodesOfHERO,
   fundCodesOfWatch,
+  fundCodesOfJI,
   funCodesOfAll,
 } = require("../const/fund");
 
