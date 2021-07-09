@@ -18,6 +18,7 @@ const routes = [
   { keyword: "然", handle: () => getFunds(fundCodesOfRan) },
   { keyword: "观察", handle: () => getFunds(fundCodesOfWatch) },
   { keyword: "HERO", handle: () => getFunds(fundCodesOfHERO) },
+  { keyword: "吉", handle: () => getFunds(fundCodesOfJI) },
   { keyword: "所有人", handle: () => getFunds(funCodesOfAll) },
 ];
 const roomList = ["对韭当割", "测试", "一灯韭菜抱团取暖开车群"];

@@ -43,6 +43,7 @@ const fundCodesOfWatch = [
   159995
 `),
 ];
+const fundCodesOfJI = ["005827", "160222", "161725", "008282", "400015"];
 
 const funCodesOfAll = [
   ...new Set([
@@ -52,6 +53,7 @@ const funCodesOfAll = [
     ...fundCodesOfRan,
     ...fundCodesOfHERO,
     ...fundCodesOfWatch,
+    ...fundCodesOfJI,
   ]),
 ];
 
@@ -62,5 +64,6 @@ module.exports = {
   fundCodesOfRan,
   fundCodesOfHERO,
   fundCodesOfWatch,
+  fundCodesOfJI,
   funCodesOfAll,
 };
