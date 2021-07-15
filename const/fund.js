@@ -23,7 +23,7 @@ const fundCodes = [
 
 const PANG_CODE = ["005312", "008282", "002168", "160222", "003095"];
 const fundCodesOfYang = ["260108", "000404", "161725", "000248"];
-const fundCodesOfRan = ["161725", "160222", "003095", "164906"];
+const fundCodesOfRan = ["161725", "160222", "003095", "164906", "012412"];
 const fundCodesOfHERO = [
   ...join(`
 	001593
