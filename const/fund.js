@@ -35,6 +35,7 @@ const fundCodesOfHERO = [
 	166002
 	161725
 	012414
+  001606
 `),
 ];
 const fundCodesOfWatch = [
