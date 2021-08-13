@@ -1,6 +1,7 @@
 const getFunds = require("../message/fund");
 const getAIAns = require("../message/AI-Tencent");
 const { getSelfName } = require("../lib");
+const { list } = require("../const/room");
 const {
   PANG_CODE,
   fundCodes,
@@ -22,7 +23,6 @@ const routes = [
   { keyword: "吉", handle: () => getFunds(fundCodesOfJI) },
   { keyword: "所有人", handle: () => getFunds(funCodesOfAll) },
 ];
-const roomList = ["对韭当割", "测试", "一灯韭菜抱团取暖开车群"];
 async function handleMessage(msg) {
   const text = msg.text();
   const contact = msg.from();
@@ -30,8 +30,10 @@ async function handleMessage(msg) {
   const atSelf = text.includes(`@${getSelfName()}`);
   if (!room) return;
   const topic = await room.topic();
+  const roomid = await room.id;
+  console.log(`RoomID: ${roomid}`);
   console.log(`Room: ${topic} Contact: ${contact.name()} Text: ${text}`);
-  if (roomList.includes(topic)) {
+  if (list.find((item) => item.id === roomid)) {
     let route = null;
     let cleanText = text
       .replace(new RegExp(`@${getSelfName()}`, "g"), "")
@@ -42,7 +44,8 @@ async function handleMessage(msg) {
       });
     }
     let handle = route ? route.handle : null;
-    if (handle && topic === "对韭当割" && !atSelf) {
+    const tid = list.find((item) => item.topic === "对韭当割").id;
+    if (handle && roomid === tid && !atSelf) {
       handle = null;
     }
     if (!handle && !atSelf) return;
