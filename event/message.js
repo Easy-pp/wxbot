@@ -33,32 +33,30 @@ async function handleMessage(msg) {
   const roomid = await room.id;
   console.log(`RoomID: ${roomid}`);
   console.log(`Room: ${topic} Contact: ${contact.name()} Text: ${text}`);
-  if (list.find((item) => item.id === roomid)) {
-    let route = null;
-    let cleanText = text
-      .replace(new RegExp(`@${getSelfName()}`, "g"), "")
-      .trim();
-    if (text.includes("基金")) {
-      route = routes.find((route) => {
-        return cleanText.includes(route.keyword);
-      });
-    }
-    let handle = route ? route.handle : null;
-    const tid = list.find((item) => item.topic === "对韭当割").id;
-    if (handle && roomid === tid && !atSelf) {
-      handle = null;
-    }
-    if (!handle && !atSelf) return;
-    if (!handle && atSelf) {
-      handle = getAIAns;
-    }
-    let params = {
-      room: topic,
-      contact,
-      text,
-    };
-    const message = await handle(params);
-    await msg.say(message);
+  // if (list.find((item) => item.id === roomid)) {
+  let route = null;
+  let cleanText = text.replace(new RegExp(`@${getSelfName()}`, "g"), "").trim();
+  if (text.includes("基金")) {
+    route = routes.find((route) => {
+      return cleanText.includes(route.keyword);
+    });
   }
+  let handle = route ? route.handle : null;
+  // const tid = list.find((item) => item.topic === "对韭当割").id;
+  if (handle && topic === "对韭当割" && !atSelf) {
+    handle = null;
+  }
+  if (!handle && !atSelf) return;
+  if (!handle && atSelf) {
+    handle = getAIAns;
+  }
+  let params = {
+    room: topic,
+    contact,
+    text,
+  };
+  const message = await handle(params);
+  await msg.say(message);
+  // }
 }
 module.exports = handleMessage;
