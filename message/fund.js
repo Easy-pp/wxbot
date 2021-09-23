@@ -32,7 +32,7 @@ function getFund(code) {
     .get(urlA)
     .then(({ data }) => {
       const o = JSON.parse(data.slice(8, -2));
-      console.log(data);
+      // console.log(data);
       return {
         name: o.name,
         rate: o.gszzl,

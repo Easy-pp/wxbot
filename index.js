@@ -44,6 +44,9 @@ const bot = new Wechaty({
 	 *  - etc. see: <https://github.com/wechaty/wechaty-puppet/wiki/Directory>
 	 */
 	puppet: 'wechaty-puppet-wechat',
+	puppetOptions: {
+		timeout: 0
+	}
 });
 
 bot.on("scan", onScan);
