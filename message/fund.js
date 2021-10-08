@@ -64,7 +64,7 @@ function getFund(code) {
     });
 }
 
-async function getFunds(codes = fundCodes) {
+async function getFunds(codes = []) {
   return Promise.all(codes.map(getFund)).then((list) => formatOutput(list));
 }
 
