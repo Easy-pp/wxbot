@@ -1,5 +1,6 @@
 const axios = require("axios");
 const iconv = require("iconv-lite");
+const { funCodesOfAll } = require("../const/fund");
 
 function getColor(n) {
   let times = n > 0 ? n >> 0 : -n >> 0;
@@ -64,7 +65,7 @@ function getFund(code) {
     });
 }
 
-async function getFunds(codes = []) {
+async function getFunds(codes = funCodesOfAll) {
   return Promise.all(codes.map(getFund)).then((list) => formatOutput(list));
 }
 
