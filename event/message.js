@@ -1,6 +1,7 @@
 const getFunds = require("../message/fund");
 const getAIAns = require("../message/AI-Tencent");
 const { getSelfName } = require("../lib");
+const useReRead = require("./useReRead");
 const { list } = require("../const/room");
 const {
   PANG_CODE,
@@ -25,12 +26,14 @@ const routes = [
 ];
 async function handleMessage(msg) {
   const text = msg.text();
-  const contact = msg.from();
+  const contact = msg.talker();
   const room = msg.room();
   const atSelf = text.includes(`@${getSelfName()}`);
   if (!room) return;
   const topic = await room.topic();
   const roomid = await room.id;
+  // 复读模块
+  useReRead(msg);
   console.log(`RoomID: ${roomid}`);
   console.log(`Room: ${topic} Contact: ${contact.name()} Text: ${text}`);
   // if (list.find((item) => item.id === roomid)) {
