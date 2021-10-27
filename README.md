@@ -16,3 +16,7 @@
 
 - [英文文档](https://wechaty.gitbook.io/wechaty/)
 - [中文文档](https://wechaty.gitbook.io/wechaty/v/zh/)
+
+## TODO
+
+- [ ] 整理精简 lib

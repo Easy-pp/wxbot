@@ -1,3 +1,5 @@
+// 注意：本api目前仅 getNews 在项目中使用
+
 const cheerio = require("cheerio");
 const { req } = require("./superagent");
 const apiConfig = require("./config");
@@ -25,6 +27,7 @@ function getUniqueId(id) {
  * 设置定时提醒任务
  * @param {*} obj 任务详情
  * @returns {*} 任务详情
+ * @deprecated 不存在 apiConfig.KOAHOST 服务
  */
 async function setSchedule(obj) {
 	try {
