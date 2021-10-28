@@ -1,4 +1,4 @@
-const { selfName } = require("../const/self");
+const { getSelfName } = require("../lib");
 const MAX_LENGTH = 100;
 
 global.message = {};
@@ -32,7 +32,7 @@ const useReRead = (msg) => {
 
   // 判定自己是不是说过这个消息，说过就终止
   const isSaid = message[roomid].find(
-    (item) => item.name === selfName && item.text === text
+    (item) => item.name === getSelfName() && item.text === text
   );
   if (isSaid) return;
 
