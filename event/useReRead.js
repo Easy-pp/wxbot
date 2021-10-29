@@ -9,7 +9,13 @@ global.message = {};
  * @param {*} cb
  * @returns say
  */
-const useReRead = (msg) => {
+const useReRead = async (msg) => {
+  // 1  公众号链接/位置
+  // 2  语音/分享的文件
+  // 6  emoji/img
+  // 7  文本/好友名片/红包/接龙/卡劵，web不支持好友名片/卡劵/红包
+  // 15 视频
+  const type = msg.type(); // 消息类型
   const text = msg.text(); // 消息
   const contact = msg.talker();
   const room = msg.room();
@@ -43,8 +49,14 @@ const useReRead = (msg) => {
     if (count >= 3) break;
   }
   if (count < 3) return;
+
+  let saymsg = text;
+  if ([1, 2, 6, 15].includes(type)) {
+    saymsg = await msg.toFileBox(); // 多媒体消息
+  }
+
   // 发送消息
-  msg.say(text);
+  msg.say(saymsg);
 };
 
 module.exports = useReRead;

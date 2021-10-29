@@ -55,6 +55,10 @@ bot.on("scan", onScan);
 bot.on("login", onLogin);
 bot.on("logout", onLogout);
 bot.on("message", handleMessage);
+bot.on("heartbeat", (str) => {
+  // TODO: 发送心跳到远端，用来监控机器人状态
+  // console.log(`test heartbeat: ${str}`);
+});
 
 bot
   .start()
