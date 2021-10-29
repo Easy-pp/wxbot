@@ -50,13 +50,17 @@ const useReRead = async (msg) => {
   }
   if (count < 3) return;
 
-  let saymsg = text;
-  if ([1, 2, 6, 15].includes(type)) {
-    saymsg = await msg.toFileBox(); // 多媒体消息
-  }
-
+  // let saymsg = text;
+  // if ([1, 2, 6, 15].includes(type)) {
+  //   saymsg = await msg.toFileBox(); // 多媒体消息
+  //   console.log(saymsg);
+  // }
+  
+  // console.log('转发');
   // 发送消息
-  msg.say(saymsg);
+  // msg.say(saymsg);
+  // 发送消息改为转发消息
+  msg.forward(room);
 };
 
 module.exports = useReRead;

@@ -26,6 +26,7 @@ const routes = [
 ];
 async function handleMessage(msg) {
   const text = msg.text();
+  const type = msg.type();
   const contact = msg.talker();
   const room = msg.room();
   const atSelf = text.includes(`@${getSelfName()}`);
@@ -35,7 +36,11 @@ async function handleMessage(msg) {
   // 复读模块
   useReRead(msg);
   console.log(`RoomID: ${roomid}`);
-  console.log(`Room: ${topic} Contact: ${contact.name()} Text: ${text}`);
+  if (type === 7) {
+    console.log(`Room: ${topic} Contact: ${contact.name()} Text: ${text}`);
+  } else {
+    console.log(`Room: ${topic} Contact: ${contact.name()} TextType: ${type}`);
+  }
   // if (list.find((item) => item.id === roomid)) {
   let route = null;
   let cleanText = text.replace(new RegExp(`@${getSelfName()}`, "g"), "").trim();
