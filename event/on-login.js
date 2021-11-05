@@ -2,6 +2,7 @@ const api = require("../proxy/api");
 const lib = require("../lib");
 const common = require("../common/index");
 const config = require("../wechat.config.js");
+const schedule = require("../schedule/index");
 
 /**
  * 每日新闻资讯，针对群
@@ -29,40 +30,6 @@ async function setEveryDayRoomSayTask(that, item) {
     }
   } catch (error) {
     console.log("设置群定时任务失败：", error);
-  }
-}
-/**
- * 每日说定时任务设定，针对好友
- * @param {*} that bot对象
- * @param {*} item 任务项
- * @deprecated
- */
-async function setEveryDayTask(that, item) {
-  try {
-    let time = item.date;
-    let contact =
-      (await that.Contact.find({ alias: item.alias })) ||
-      (await that.Contact.find({ name: item.name })); // 获取你要发送的联系人
-    if (!contact) {
-      console.log(
-        `查找不到用户昵称为'${item.name}'或备注为'${item.alias}'的用户，请检查设置用户是否正确`
-      );
-      return;
-    } else {
-      console.log(`设置用户：“${item.name}|${item.alias}”每日说任务成功`);
-      lib.setSchedule(time, async () => {
-        let content = await common.getEveryDayContent(
-          item.memorialDay,
-          item.city,
-          item.endWord
-        );
-        console.log("每日说任务开始工作,发送内容：", content);
-        lib.delay(10000);
-        await contact.say(content);
-      });
-    }
-  } catch (error) {
-    console.log("每日说任务设置失败");
   }
 }
 
@@ -108,6 +75,7 @@ async function onLogin(user) {
   console.log(`贴心小助理${user}登录了`);
   setTimeout(async () => {
     initSchedule(this, config.ROOMLIST);
+    schedule(this);
   }, 4000);
 }
 

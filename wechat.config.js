@@ -7,20 +7,22 @@ module.exports = {
 	/**
 	 * 每日说定时任务（支持多人）
 	 * name:要发送好友的昵称 （注：不是微信号！不是微信号！不是微信号！）
-	 * alias:要发送好友的备注（默认查找备注优先，防止昵称带表情特殊字符）
+	 * alias:要发送好友的备注（默认查找备注优先，防止昵称带表情特殊字符） （isRoom 为 true 时不生效）
 	 * memorialDay:你与朋友的纪念日
 	 * city:朋友所在城市，写的时候不要带‘市’
 	 * endWord:每日说内容的最后的落款 案例中效果为‘——————————爱你的朋友Leo_chen’
 	 * date:每天定时的发送时间，案例中代表每天早上8点钟，具体规则见‘wechaty/lib/index.js’ (多个好友不要设置相同时间！不要设置相同时间！不要设置相同时间！)
+	 * isRoom: 是群组还是人
 	 */
 	DAYLIST: [
 		{
-			name: "sunset",
+			name: "一个有趣的地方",
 			alias: "",
-			memorialDay: "1995/04/15",
-			city: "杭州",
-			endWord: "爱你的陳嘿嘿",
-			date: "0 30 9 * * *",
+			memorialDay: "2018/04/25",
+			city: "北京",
+			endWord: "爱你的小然子",
+			date: "0 12 * * *",
+			isRoom: true,
 		},
 	],
 

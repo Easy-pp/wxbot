@@ -2,7 +2,6 @@ const { Wechaty, ScanStatus, log } = require("wechaty");
 
 const handleMessage = require("./event/message");
 const onLogin = require("./event/on-login");
-const schedule = require("./schedule/index");
 
 function onScan(qrcode, status) {
   if (status === ScanStatus.Waiting || status === ScanStatus.Timeout) {
@@ -64,6 +63,5 @@ bot
   .start()
   .then(() => {
     log.info("StarterBot", "Starter Bot Started.");
-    schedule(bot);
   })
   .catch((e) => log.error("StarterBot", e));
