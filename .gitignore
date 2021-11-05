@@ -7,6 +7,7 @@ wechat.config.js
 yarn-debug.log*
 yarn-error.log*
 package-lock.json
+.yarn*
 tests/**/coverage/
 
 # Editor directories and files
