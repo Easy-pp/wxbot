@@ -1,4 +1,8 @@
-# wxbot - 小助手
+# wxbot - 小助手 - 无法使用
+
+---
+由于web协议被封禁，所以小助手暂时无法使用，等根据xp协议或者padlocal协议修改后再次上线
+https://github.com/wechaty/wechaty/issues/2352
 
 ## 启动
 
