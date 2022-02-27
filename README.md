@@ -1,8 +1,18 @@
-# wxbot - 小助手 - 无法使用
+# wxbot - 小助手 - padloal
 
 ---
-由于web协议被封禁，所以小助手暂时无法使用，等根据xp协议或者padlocal协议修改后再次上线
+由于web协议被封禁，所以小助手暂时根据padlocal协议修改后再次上线
 https://github.com/wechaty/wechaty/issues/2352
+http://pad-local.com/
+
+# 前置需要
+前往 [pad-local](http://pad-local.com/) 申请Token
+
+在根目录新建 `token_pad.js` 文件，内容如下：
+
+```javascript
+module.exports = "YOU_PUPPET_PADLOCAL"
+```
 
 ## 启动
 
@@ -25,8 +35,12 @@ https://github.com/wechaty/wechaty/issues/2352
 - [英文文档](https://wechaty.gitbook.io/wechaty/)
 - [中文文档](https://wechaty.gitbook.io/wechaty/v/zh/)
 
+## padlocal 文档
+- [padlocal 中文文档](https://github.com/wechaty/puppet-padlocal/wiki/API-%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3-(TypeScript-JavaScript))
+
 ## TODO
 
+- [ ] 项目体系重构，并更换为TS
 - [ ] 整理精简 lib
 - [ ] JSON 化基金配置
 - [ ] 将基金部分改为 use 函数
