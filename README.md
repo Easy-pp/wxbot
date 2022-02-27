@@ -2,7 +2,9 @@
 
 ---
 由于web协议被封禁，所以小助手暂时根据padlocal协议修改后再次上线
+
 https://github.com/wechaty/wechaty/issues/2352
+
 http://pad-local.com/
 
 # 前置需要
