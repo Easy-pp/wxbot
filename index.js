@@ -1,7 +1,18 @@
 const { Wechaty, ScanStatus, log } = require("wechaty");
+const { PuppetPadlocal } = require("wechaty-puppet-padlocal");
+const token = require("./token_pad");
 
 const handleMessage = require("./event/message");
-const onLogin = require("./event/on-login");
+const {
+  onLogin,
+  initSchedule,
+  schedule
+} = require("./event/on-login");
+const config = require("./wechat.config.js");
+
+const puppet = new PuppetPadlocal({
+  token,
+});
 
 function onScan(qrcode, status) {
   if (status === ScanStatus.Waiting || status === ScanStatus.Timeout) {
@@ -42,7 +53,7 @@ const options = {
    *  - wechaty-puppet-service (token required, see: <https://wechaty.js.org/docs/puppet-services>)
    *  - etc. see: <https://github.com/wechaty/wechaty-puppet/wiki/Directory>
    */
-  puppet: "wechaty-puppet-wechat",
+  puppet: puppet,
   puppetOptions: {
     timeout: 0,
   },
@@ -63,5 +74,10 @@ bot
   .start()
   .then(() => {
     log.info("StarterBot", "Starter Bot Started.");
+    // 这里开始可以调用各种API
+    bot.ready().then(async () => {
+      await initSchedule(bot, config.ROOMLIST);
+      await schedule(bot);
+    }).catch((e) => log.error("ReadyBot", e));
   })
   .catch((e) => log.error("StarterBot", e));

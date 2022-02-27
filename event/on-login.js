@@ -1,7 +1,6 @@
 const api = require("../proxy/api");
 const lib = require("../lib");
 const common = require("../common/index");
-const config = require("../wechat.config.js");
 const schedule = require("../schedule/index");
 
 /**
@@ -12,7 +11,7 @@ const schedule = require("../schedule/index");
 async function setEveryDayRoomSayTask(that, item) {
   try {
     let time = item.date;
-    let room = await that.Room.find({ topic: item.roomName });
+    let room = await that.Room.findAll({ topic: item.roomName });
     if (!room) {
       console.log(`查找不到群：${item.roomName}，请检查群名是否正确`);
       return;
@@ -62,7 +61,7 @@ async function setScheduleTask(that, item) {
 async function initSchedule(that, RoomSayList) {
   if (RoomSayList && RoomSayList.length > 0) {
     for (let room of RoomSayList) {
-      setEveryDayRoomSayTask(that, room);
+      await setEveryDayRoomSayTask(that, room);
     }
   }
 }
@@ -73,10 +72,10 @@ async function initSchedule(that, RoomSayList) {
 async function onLogin(user) {
   global.user = user;
   console.log(`贴心小助理${user}登录了`);
-  setTimeout(async () => {
-    initSchedule(this, config.ROOMLIST);
-    schedule(this);
-  }, 4000);
 }
 
-module.exports = onLogin;
+module.exports = {
+  onLogin,
+  initSchedule,
+  schedule
+};

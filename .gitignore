@@ -18,3 +18,6 @@ tests/**/coverage/
 *.njsproj
 *.sln
 *memory-card.json
+
+# TOKEN
+token*.*
