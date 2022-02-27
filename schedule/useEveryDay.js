@@ -13,7 +13,7 @@ async function setEveryDayTask(bot, item) {
         const name = isRoom ? '群' : '用户';
         let contact;
         if (isRoom) {
-            contact = await bot.Room.find({ topic: item.name }); // 获取你要发送的群组
+            contact = await bot.Room.findAll({ topic: item.name }); // 获取你要发送的群组
         } else {
             contact =
                 (await bot.Contact.find({ alias: item.alias })) ||
